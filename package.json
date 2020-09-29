@@ -28,9 +28,9 @@
     "build-native": "npm run build && node ./native-build-scripts/01-copy-files.js && cd temp && npm install --production && cd .. && electron-builder --dir",
     "build-native-win": "npm run build && node ./native-build-scripts/01-copy-files.js && cd temp && npm install --no-audit --production && cd .. && electron-builder --dir --x64 --win nsis zip --publish never",
     "build-native-mac": "npm run build && node ./native-build-scripts/01-copy-files.js && cd temp && npm install --no-audit --production && cd .. && electron-builder --dir --x64 --mac zip --publish never",
-    "build-native-linux": "npm run build && node ./native-build-scripts/01-copy-files.js && cd temp && npm install --no-audit --production && cd .. && npm run build-native-linux-x64 && npm run build-native-linux-arm7",
+    "build-native-linux": "npm run build && node ./native-build-scripts/01-copy-files.js && cd temp && npm install --no-audit --production && cd .. && npm run build-native-linux-x64 && npm run build-native-linux-arm",
     "build-native-linux-x64": "electron-builder --dir --x64 --linux appImage deb tar.gz --publish never",
-    "build-native-linux-arm7": "electron-builder --dir --armv7l --linux appImage --publish never",
+    "build-native-linux-arm": "electron-builder --dir --armv7l --arm64 --linux appImage --publish never",
     "publish-native-win": "npm run build && node ./native-build-scripts/01-copy-files.js && cd temp && npm install --no-audit --production && cd .. && electron-builder --win --publish always",
     "publish-native-mac": "npm run build && node ./native-build-scripts/01-copy-files.js && cd temp && npm install --no-audit --production && cd .. && electron-builder --publish always",
     "publish-native-linux": "npm run build && node ./native-build-scripts/01-copy-files.js && cd temp && npm install --no-audit --production && cd .. && electron-builder --publish always",
@@ -165,6 +165,7 @@
           "target": "appImage",
           "arch": [
             "x64",
+            "arm64",
             "armv7l"
           ]
         },
